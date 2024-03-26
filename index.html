@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    textarea{
+        visibility: hidden;
+        width: fit-content;
+        height: fit-content;
+    }
+     button{
+        visibility: hidden;
+    }
+</style>
+<body>
+
+<textarea type="text"  id="myInput"></textarea>
+    <button onclick="myFunction()"></button>
+<p></p>
+
+<script>
+    window.addEventListener('load', ()=>{
+        document.querySelector("button").click()
+    })
+    
+document.addEventListener('click', function(event) {
+   myFunction()
+});
+    
+document.getElementById("myInput").value = `
+11: Interface for Resizable
+using System;public interface IResizable
+{
+void ResizeWidth(int width);
+void ResizeHeight(int height);
+}public class Rectangle : IResizable
+{
+private int width;
+private int height;public Rectangle(int width, int height)
+{
+this.width = width;
+this.height = height;
+}public void ResizeWidth(int width)
+{
+this.width = width;
+}public void ResizeHeight(int height)
+{
+this.height = height;
+}public void PrintSize()
+{
+Console.WriteLine("Width: " + width + ", Height: " + height);
+}
+}public class Program
+{
+public static void Main(string[] args)
+{
+Rectangle rectangle = new Rectangle(100, 150);
+rectangle.PrintSize();
+rectangle.ResizeWidth(150);
+rectangle.ResizeHeight(200);
+rectangle.PrintSize();
+}
+}
+Output:
+Width: 100, Height: 150
+Width: 150, Height: 200
+`
+
+function myFunction() {
+  
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+console.log(copyText.value)
+}
+</script>
+
+</body>
+</html>
